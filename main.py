@@ -1,10 +1,11 @@
-import pymongo
 from flask import Flask, render_template, request, jsonify, redirect, session, flash
 app = Flask(__name__)
 app.secret_key = 'seora'
 
+import config
+
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:sparta@cluster0.zkful.mongodb.net/Cluster0?retryWrites=true&w=majority')
+client = MongoClient(config.Mongo_key)
 db = client.dbsparta
 
 
