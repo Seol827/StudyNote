@@ -2,10 +2,10 @@ from flask import Flask, render_template, request, jsonify, redirect, session, f
 app = Flask(__name__)
 app.secret_key = 'seora'
 
-import config
+import certifi
 
 from pymongo import MongoClient
-client = MongoClient(config.Mongo_key)
+client = MongoClient('mongodb+srv://test:sparta@cluster0.zkful.mongodb.net/Cluster0?retryWrites=true&w=majority',tlsCAFile=certifi.where())
 db = client.dbsparta
 
 
@@ -22,4 +22,4 @@ def homework_get():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=8000, debug=True)
