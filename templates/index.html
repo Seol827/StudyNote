@@ -3,8 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Study Note</title>
+    <link rel="stylesheet" href="static/index.css";>
 </head>
 <body>
+<div id="wrap">
+    <div class="tabs">
+        <input id="all" type="radio" name="tab_item" checked>
+            <label class="tab_item" for="all">Main</label>
+
+        <input id="brainstorming" type="radio" name="tab_item">
+            <label class="tab_item" for="brainstorming">Brainstorming</label>
+
+        <input id="book" type="radio" name="tab_item">
+            <label class="tab_item" for="book">BOOK</label>
+
+        <form class="tab_content" id="main_content" action="/">  <!----method="post"---->
+            <div class="loginform_back">
+                <div class="main_page">
+                    <input type="text" placeholder="ID" required>
+                    <input type="password" placeholder="PASSWORD" required>
+                    <button type="submit">SIGN IN</button>
+                    <div class="seperator"><b>or</b></div>
+                    <a class="reset-psw" href="signup">SIGN UP</a>
+                </div>
+
+
+            </div>
+        </form>
+
+        <div class="tab_content" id="brainstorming_content">
+            익명 방명록
+        </div>
+
+        <div class="tab_content" id="book_content">
+            도서 검색 API
+        </div>
+    </div>
+
+
+    <footer>
+        <nav>
+            <a href='#' target='_blank'>Blog</a> |
+            <a href='https://github.com/Seol827/StudyNote' target='_blank'>Github</a>
+        </nav>
+        <p>
+            <span>팀원 : 최현민 - 최서라 - 김주탁 - 김영우</span><br/>
+            <span>항해99 Toy. Study Note</span><br/>
+            <span>Copyright 2022. 15조. All Rights Reserved.</span>
+        </p>
+    </footer>
+</div>
     <h1>Hi? 푸쉬테스트</h1>
 </body>
 </html>
