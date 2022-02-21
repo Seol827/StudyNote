@@ -2,10 +2,10 @@ from flask import Flask, render_template, request, jsonify, redirect, session, f
 app = Flask(__name__)
 app.secret_key = 'seora'
 
-import certifi
+import config
 
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:sparta@cluster0.zkful.mongodb.net/Cluster0?retryWrites=true&w=majority',tlsCAFile=certifi.where())
+client = MongoClient(config.Mongo_key)
 db = client.dbsparta
 
 
