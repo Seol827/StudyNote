@@ -1,1 +1,0 @@
-Mongo_key = 'mongodb+srv://test:sparta@cluster0.zkful.mongodb.net/Cluster0?retryWrites=true&w=majority'
