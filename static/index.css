@@ -55,7 +55,7 @@ footer p span {
 
 /* 탭 스타일 */
 .tab_item {
-    width: calc(100% / 3);
+    width: calc(100% / 4);
     height: 50px;
     border-bottom: 3px solid #495371;
     border-radius: 3px;
@@ -82,18 +82,13 @@ input[name="tab_item"] {
 
 /* 탭 컨텐츠 스타일 */
 .tab_content {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 40px 40px 0;
     clear: both;
-    overflow: hidden;
 }
 
-/* 선택 된 탭 콘텐츠를 표시 */
-#all:checked ~ #main_content,
-#brainstorming:checked ~ #brainstorming_content,
-#book:checked ~ #book_content {
-  display: block;
-}
 
 /* 선택된 탭 스타일 */
 .tabs input:checked + .tab_item {
@@ -108,21 +103,20 @@ input[name="tab_item"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 600px;
-    background-color: #F1E0AC;
-    margin-top: 100px;
+    height: 400px;
+    margin-top: 150px;
 }
 
 .main_page {
-    background-color: #98B4AA;
+    background-color: #74959A;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     width: 500px;
-    height: 300px;
-    border-radius: 5px;
+    height: 400px;
+    border-radius: 20px;
 
 }
 
@@ -131,9 +125,84 @@ input[name="tab_item"] {
     width: 400px;
     height: 60px;
     border-radius: 74px;
-    border: 1px solid #ccc;
+    border: 2px solid #98B4AA;
     box-sizing: border-box;
-    padding: 0 10px;
+    padding: 0 25px;
     margin-bottom: 15px;
+    color: white;
+}
 
+input:focus {
+    outline: none;
+}
+
+.signin {
+    all: unset;
+        background-color: #98B4AA;
+        width: 400px;
+        height: 60px;
+        border-radius: 74px;
+        box-sizing: border-box;
+        padding: 0 25px;
+        margin: 20px auto 15px auto;
+        text-align: center;
+        color: white;
+}
+
+.main_page button:hover {
+    cursor: pointer;
+}
+
+.main_page a {
+    color: lightgray;
+    text-decoration: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.main_page a:hover, .main_page a:active {
+    text-decoration: none;
+    color:#fff;
+}
+
+.main_page h2{
+    margin-bottom: 25px;
+    color: #F1E0AC;
+}
+
+/*login*/
+.flash {
+    color : red;
+}
+
+/*loginresult*/
+.tab_content_loginresult{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*padding: 40px 40px 0;*/
+    clear: both;
+}
+
+.tab_logout {
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.tab_logout button,  .tab_logout button:hover{
+    all:unset;
+        font-size: 14px;
+        color: #74959A;
+        font-weight: bolder;
+        cursor: pointer;
+        padding-right: 5px;
+}
+
+.welcome{
+    margin-top: 20px;
+    color: #495371;
 }
