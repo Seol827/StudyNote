@@ -3,48 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Study Note</title>
-    <link rel="stylesheet" href="static/index.css";>
+    <link rel="stylesheet" href="static/index.css">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/2adf3c10c8.js" crossorigin="anonymous"></script>
+
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false">
 <div id="wrap">
     <div class="tabs">
         <input id="all" type="radio" name="tab_item" checked>
-            <label class="tab_item" for="all">Main</label>
+            <label class="tab_item" for="all" onclick="location.href='/'">Main</label>
 
         <input id="brainstorming" type="radio" name="tab_item">
-            <label class="tab_item" for="brainstorming">Brainstorming</label>
+            <label class="tab_item" for="brainstorming" onclick="location.href='/'">Brainstorming</label>
 
         <input id="book" type="radio" name="tab_item">
-            <label class="tab_item" for="book">BOOK</label>
+            <label class="tab_item" for="book" onclick="location.href='/'">BOOK</label>
 
-        <form class="tab_content" id="main_content" action="/">  <!----method="post"---->
+
+        {%if session['userid']%}
+        <div class="tab_content_loginresult">
+            <div class="tab_logout">
+                <button onclick="location.href='/logout'">logout</button>
+            </div>
+            <h2 class="welcome">안녕하세요, {{session['userid']}}님!</h2>
+        </div>
+        {%else%}
+        <form class="tab_content" id="main_content" action="/loginresult" method="post">
             <div class="loginform_back">
                 <div class="main_page">
-                    <input type="text" placeholder="ID" required>
-                    <input type="password" placeholder="PASSWORD" required>
-                    <button type="submit">SIGN IN</button>
-                    <div class="seperator"><b>or</b></div>
-                    <a class="reset-psw" href="signup">SIGN UP</a>
+                    <h2><i class="fa-solid fa-book-open"></i> Study Note <i class="fa-solid fa-book-open"></i></h2>
+                    <input type="text" name="userid" placeholder="ID" spellcheck="false" required>
+                    <input type="password" name="psw" placeholder="PASSWORD" spellcheck="false" required>
+
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for mes in messages %}
+                    <span class="flash">{{ mes }}</span>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    <button type="submit" class="signin">SIGN IN</button>
+                    <a class="signup" href="/signup">SIGN UP</a>
                 </div>
-
-
             </div>
         </form>
+        {%endif%}
+   </div>
+<!--        <div class="tab_content" id="brainstorming_content">-->
+<!--            익명 방명록-->
+<!--        </div>-->
 
-        <div class="tab_content" id="brainstorming_content">
-            익명 방명록
-        </div>
+<!--        <div class="tab_content" id="book_content">-->
+<!--            도서 검색 API-->
+<!--        </div>-->
 
-        <div class="tab_content" id="book_content">
-            도서 검색 API
-        </div>
-    </div>
 
 
     <footer>
         <nav>
             <a href='#' target='_blank'>Blog</a> |
-            <a href='https://github.com/Seol827/StudyNote' target='_blank'>Github</a>
+            <a href='https://github.com/CCKK15/StudyNote' target='_blank'>Github</a>
         </nav>
         <p>
             <span>팀원 : 최현민 - 최서라 - 김주탁 - 김영우</span><br/>
@@ -53,5 +73,8 @@
         </p>
     </footer>
 </div>
+
+
+
 </body>
 </html>
