@@ -1,0 +1,75 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.mycards {
+    margin: 30px auto 0px auto;
+    width: 95%;
+    max-width: 1000px;
+    display: flex;
+}
+
+.search-book {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cards-box{
+    background-color:#F1E0AC;
+    border-radius: 20px;
+}
+.search-book input {
+    width: 50%;
+    padding: 15px;
+    margin: 17px 5px 15px 0;
+    background-color: transparent;
+    border-radius: 74px;
+    border: 2px solid #98B4AA;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+}
+
+.search {
+    all: unset;
+    background-color: #98B4AA;
+    width: 100px;
+    height: 40px;
+    border-radius: 50px;
+    box-sizing: border-box;
+    padding: 0 25px;
+    text-align: center;
+    color: white;
+}
+
+.close {
+    all: unset;
+    background-color: #74959A;
+    width: 100px;
+    height: 40px;
+    border-radius: 50px;
+    box-sizing: border-box;
+    padding: 0 25px;
+    text-align: center;
+    color: white;
+}
+
+.title {
+    margin-top: 30px;
+}
+
+.title h1 {
+    font-weight: bolder;
+    font-size: 50px;
+    text-align: center;
+    color: #F1E0AC;
+
+}
+
+.search-book button {
+    margin-right: 5px;
+}

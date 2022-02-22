@@ -1,10 +1,10 @@
+import config
 from flask import Flask, render_template, request, jsonify, redirect, session, flash
+from pymongo import MongoClient
 app = Flask(__name__)
 app.secret_key = 'seora'
 
-import config
 
-from pymongo import MongoClient
 client = MongoClient(config.Mongo_key)
 db = client.dbsparta
 
@@ -12,6 +12,10 @@ db = client.dbsparta
 @app.route('/')
 def home():
     return render_template('index.html')
+
+@app.route('/book')
+def book():
+    return render_template('search.book.html')
 
 
 @app.route('/loginresult', methods=["POST"])
