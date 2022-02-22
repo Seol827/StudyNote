@@ -5,6 +5,7 @@ app.secret_key = 'seora'
 import config
 
 from pymongo import MongoClient
+
 client = MongoClient(config.Mongo_key)
 db = client.dbsparta
 
@@ -13,6 +14,9 @@ db = client.dbsparta
 def home():
     return render_template('index.html')
 
+@app.route('/todo/home')
+def todo_home():
+    return render_template('todolist.html')
 
 @app.route('/loginresult', methods=["POST"])
 def login_result():
@@ -73,6 +77,51 @@ def id_check():
             print('fail');
     return 'success'
 
+### to do list ###
+
+@app.route("/todo", methods=["POST"])
+def todo_post():
+    all_todos = list(db.todos.find({}, {'_id': False}))
+    count = len(all_todos) + 1
+    todo_receive = request.form['todo_give']
+
+    doc = {
+        'num' : count,
+        'todo' : todo_receive,
+        'done' : 0
+    }
+
+    db.todos.insert_one(doc)
+    return jsonify({'msg': '저장완료!'})
+
+@app.route("/todo/done", methods=["POST"])
+def todo_done():
+
+    num_receive = request.form['num_give']
+    db.todos.update_one({'num' : int(num_receive)},{'$set' : {'done': 1} })
+    return jsonify({'msg': '완료!'})
+
+
+@app.route("/todo", methods=["GET"])
+def todo_get():
+    id = list(db.user.find({}, {'_id': False, 'password': False, 'name': False}))
+    todo_list = list(db.todos.find({}, {'_id': False}))
+
+    return jsonify({'todos': todo_list})
+
+@app.route("/todo", methods=["DELETE"])
+def todo_delete():
+
+    num_receive = request.form['num_give']
+    db.todos.delete_one({'num': int(num_receive)})
+
+    return jsonify({'msg':'삭제완료'})
+
+# @app.route("/todo/id", methods=["GET"])
+# def todo_id():
+#     id = list(db.user.find({}, {'_id': False, 'password': False, 'name' : False}))
+#
+#     return jsonify({'id': id})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8000, debug=True)

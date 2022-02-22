@@ -55,7 +55,7 @@ footer p span {
 
 /* 탭 스타일 */
 .tab_item {
-    width: calc(100% / 3);
+    width: calc(100% / 4);
     height: 50px;
     border-bottom: 3px solid #495371;
     border-radius: 3px;
