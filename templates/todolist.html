@@ -67,7 +67,9 @@
             text-decoration: line-through
         }
 
-        {#index#}
+        {
+            #index #
+        }
         #wrap {
             min-height: 100vh;
             position: relative;
@@ -146,18 +148,14 @@
                         if (done == 0) {
                             temp_html = `<li>
                                             <h2>${todo}</h2>
-
                                             <button onclick="done_todo(${num})" type="button" class="btn btn-outline-white">complete</button>
                                             <button onclick="delete_todo(${num})" type="button" class="btn btn-outline-white">delete</button>
-
                                         </li>`
                         } else {
                             temp_html = `<li>
                                             <h2 class="done">${todo}</h2>
-
                                             <button onclick="undo_todo(${num})" type="button" class="btn btn-outline-white">undo</button>
                                             <button onclick="delete_todo(${num})" type="button" class="btn btn-outline-white">delete</button>
-
                                         </li>`
                         }
                         $('#todo-list').append(temp_html)
@@ -221,7 +219,7 @@
 
 <div id="wrap">
     <div class="tabs">
-        <input id="all" type="radio" name="tab_item" >
+        <input id="all" type="radio" name="tab_item">
         <label class="tab_item" for="all" onclick="location.href='/'">Main</label>
 
         <input id="todolist" type="radio" name="tab_item" checked>
