@@ -4,7 +4,6 @@ app.secret_key = 'seora'
 
 import config
 
-
 from pymongo import MongoClient
 
 client = MongoClient(config.Mongo_key)
@@ -113,9 +112,7 @@ def todo_done():
 
 @app.route("/todo", methods=["GET"])
 def todo_get():
-    # id = list(db.user.find({}, {'_id': False, 'password': False, 'name': False}))
     id = session['userid']
-    # todo_id = list(db.todos.find({}, {'_id': False},{'num': False},{'todo': False},{'done': False}))
 
     todo_list = list(db.todos.find({'userid':id}, {'_id': False}))
 
@@ -135,12 +132,6 @@ def todo_undo():
     db.todos.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
 
     return redirect("/todo/home")
-
-# @app.route("/todo/id", methods=["GET"])
-# def todo_id():
-#     id = list(db.user.find({}, {'_id': False, 'password': False, 'name' : False}))
-#
-#     return jsonify({'id': id})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8000, debug=True)
