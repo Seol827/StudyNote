@@ -1,9 +1,11 @@
+from json import dumps
+
 import config
 from flask import Flask, render_template, request, jsonify, redirect, session, flash
 from pymongo import MongoClient
+
 app = Flask(__name__)
 app.secret_key = 'seora'
-
 
 client = MongoClient(config.Mongo_key)
 db = client.dbsparta
@@ -13,9 +15,14 @@ db = client.dbsparta
 def home():
     return render_template('index.html')
 
+
 @app.route('/book')
 def book():
     return render_template('search.book.html')
+
+@app.route('/todo')
+def todo_show():
+    return render_template('todolist.html')
 
 
 @app.route('/loginresult', methods=["POST"])
@@ -74,8 +81,10 @@ def id_check():
     if check_user_id is not None:
         if check_user_id['ID']:
             return 'fail'
-            print('fail');
     return 'success'
+
+
+
 
 
 if __name__ == '__main__':

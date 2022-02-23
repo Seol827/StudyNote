@@ -58,10 +58,6 @@ input:focus {
     color: white;
 }
 
-.title {
-    margin-top: 30px;
-}
-
 .title h1 {
     font-weight: bolder;
     font-size: 50px;
