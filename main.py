@@ -14,6 +14,10 @@ db = client.dbsparta
 def home():
     return render_template('index.html')
 
+@app.route('/book')
+def book():
+    return render_template('search.book.html')
+
 @app.route('/todo/home')
 def todo_home():
     return render_template('todolist.html')
