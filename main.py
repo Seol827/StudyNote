@@ -30,8 +30,8 @@ def login_result():
         return redirect('/')
     else:
         if check_user_id.get("password") == password_receive:
-            user_name = check_user_id.get("name")
-            session['userid'] = user_name
+            user_id = check_user_id.get("ID")
+            session['userid'] = user_id
             return redirect("/")
         else:
             flash('회원 정보를 확인해 주세요.')
@@ -85,7 +85,10 @@ def todo_post():
     count = len(all_todos) + 1
     todo_receive = request.form['todo_give']
 
+    id = session['userid']
+
     doc = {
+        'userid' : id,
         'num' : count,
         'todo' : todo_receive,
         'done' : 0
@@ -100,13 +103,16 @@ def todo_done():
 
     num_receive = request.form['num_give']
     db.todos.update_one({'num' : int(num_receive)},{'$set' : {'done': 1} })
-    return jsonify({'msg': '완료!'})
+    return redirect("/todo/home")
 
 
 @app.route("/todo", methods=["GET"])
 def todo_get():
-    id = list(db.user.find({}, {'_id': False, 'password': False, 'name': False}))
-    todo_list = list(db.todos.find({}, {'_id': False}))
+    # id = list(db.user.find({}, {'_id': False, 'password': False, 'name': False}))
+    id = session['userid']
+    # todo_id = list(db.todos.find({}, {'_id': False},{'num': False},{'todo': False},{'done': False}))
+
+    todo_list = list(db.todos.find({'userid':id}, {'_id': False}))
 
     return jsonify({'todos': todo_list})
 
@@ -116,14 +122,14 @@ def todo_delete():
     num_receive = request.form['num_give']
     db.todos.delete_one({'num': int(num_receive)})
 
-    return jsonify({'msg':'삭제완료'})
+    return 'success'
 
 @app.route("/todo/undo", methods=["POST"])
 def todo_undo():
     num_receive = request.form['num_give']
     db.todos.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
 
-    return jsonify({'msg':'되돌리기'})
+    return redirect("/todo/home")
 
 # @app.route("/todo/id", methods=["GET"])
 # def todo_id():
