@@ -146,23 +146,18 @@
                         if (done == 0) {
                             temp_html = `<li>
                                             <h2>${todo}</h2>
-<<<<<<< HEAD
-                                            <button onclick="done_todo(${num})" type="button" class="btn btn-outline-dark">완료</button>
-                                            <button onclick="delete_todo(${num})" type="button" class="btn btn-outline-danger">삭제</button>
-=======
+
                                             <button onclick="done_todo(${num})" type="button" class="btn btn-outline-white">complete</button>
                                             <button onclick="delete_todo(${num})" type="button" class="btn btn-outline-white">delete</button>
->>>>>>> hyeonmin
+
                                         </li>`
                         } else {
                             temp_html = `<li>
                                             <h2 class="done">${todo}</h2>
-<<<<<<< HEAD
-                                            <button onclick="delete_todo(${num})" type="button" class="btn btn-outline-danger">삭제</button>
-=======
+
                                             <button onclick="undo_todo(${num})" type="button" class="btn btn-outline-white">undo</button>
                                             <button onclick="delete_todo(${num})" type="button" class="btn btn-outline-white">delete</button>
->>>>>>> hyeonmin
+
                                         </li>`
                         }
                         $('#todo-list').append(temp_html)
