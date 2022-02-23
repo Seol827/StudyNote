@@ -92,7 +92,8 @@ def todo_post():
     }
 
     db.todos.insert_one(doc)
-    return jsonify({'msg': '저장완료!'})
+
+    return redirect("/todo/home")
 
 @app.route("/todo/done", methods=["POST"])
 def todo_done():
@@ -116,6 +117,13 @@ def todo_delete():
     db.todos.delete_one({'num': int(num_receive)})
 
     return jsonify({'msg':'삭제완료'})
+
+@app.route("/todo/undo", methods=["POST"])
+def todo_undo():
+    num_receive = request.form['num_give']
+    db.todos.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
+
+    return jsonify({'msg':'되돌리기'})
 
 # @app.route("/todo/id", methods=["GET"])
 # def todo_id():
