@@ -67,9 +67,6 @@
             text-decoration: line-through
         }
 
-        {
-            #index #
-        }
         #wrap {
             min-height: 100vh;
             position: relative;
@@ -232,7 +229,7 @@
         <label class="tab_item" for="book" onclick="location.href='/book'">BOOK</label>
     </div>
 
-
+    {%if session['userid']%}
     <div class="mybox">
         <div class="mytodo">
             <input id="todo" class="form-control" type="text" placeholder="to do..">
@@ -242,7 +239,10 @@
     <div class="mybox" id="todo-list">
 
     </div>
-
+    {%else%}
+    <script>alert('로그인 후에 이용하세요.')</script>
+    <script>location.href='/'</script>
+    {%endif%}
 </div>
 </body>
 </html>
