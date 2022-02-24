@@ -81,8 +81,8 @@ def id_check():
             print('fail');
     return 'success'
 
-### to do list ###
 
+### to do list ###
 @app.route("/todo", methods=["POST"])
 def todo_post():
     all_todos = list(db.todos.find({}, {'_id': False}))
@@ -102,6 +102,7 @@ def todo_post():
 
     return redirect("/todo/home")
 
+
 @app.route("/todo/done", methods=["POST"])
 def todo_done():
 
@@ -118,6 +119,7 @@ def todo_get():
 
     return jsonify({'todos': todo_list})
 
+
 @app.route("/todo", methods=["DELETE"])
 def todo_delete():
 
@@ -126,12 +128,14 @@ def todo_delete():
 
     return 'success'
 
+
 @app.route("/todo/undo", methods=["POST"])
 def todo_undo():
     num_receive = request.form['num_give']
     db.todos.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
 
     return redirect("/todo/home")
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8000, debug=True)

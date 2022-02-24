@@ -38,6 +38,9 @@
         <input id="all" type="radio" name="tab_item" checked>
             <label class="tab_item" for="all" onclick="location.href='/'">Main</label>
 
+        <input id="todolist" type="radio" name="tab_item">
+            <label class="tab_item" for="todo" onclick="location.href='/todo/home'">TO-DO LIST</label>
+
         <input id="brainstorming" type="radio" name="tab_item">
             <label class="tab_item" for="brainstorming" onclick="location.href=''">Brainstorming</label>
 
@@ -50,14 +53,16 @@
                 <div class="main_page">
                     <h2>회원가입</h2>
 
-                    <input type="text" name="userid" id="userid" placeholder="ID" onblur="idcheck()" spellcheck="false" required>
+                    <input type="text" name="userid" id="userid" placeholder="ID (영문)" onblur="idcheck()" pattern="[A-Za-z]+" spellcheck="false" required>
 
                     <!-- 아이디 중복 체크 -->
                     <span id="id_check"></span>
 
-                    <input type="password" name="psw" id="password" placeholder="Password" spellcheck="false" required>
-
-                    <input type="text" name="irum" id="irum" placeholder="Name" spellcheck="false" required>
+                    <div class="pswpart-">
+                        <input type="password" name="psw" id="password" maxlength="15" placeholder="Password" spellcheck="false" required>
+                            <i class="fa-solid fa-eye" id="eye-"></i>
+                    </div>
+                    <input type="text" name="irum" id="irum" placeholder="Name" maxlength="10" spellcheck="false" required>
 
                     <button class="sign-btn" type="submit">SIGN UP</button>
                 </div>
@@ -88,7 +93,7 @@
 <!--            </form>-->
 <!--        </div>-->
 
-    </div>
+
 
         <footer>
         <nav>
@@ -101,7 +106,18 @@
             <span>Copyright 2022. 15조. All Rights Reserved.</span>
         </p>
     </footer>
-</div>
+    </div>
 
 </body>
+<script>
+        //비밀번호 확인
+        $("#eye-").on("click", function () {
+            if ($("#password").attr("type") == "password") {
+                $("#password").attr("type", "text");
+            } else {
+                $("#password").attr("type", "password");
+            }
+        });
+
+</script>
 </html>
