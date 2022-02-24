@@ -39,7 +39,7 @@
             <label class="tab_item" for="all" onclick="location.href='/'">Main</label>
 
         <input id="todolist" type="radio" name="tab_item">
-            <label class="tab_item" for="todo" onclick="location.href='/todo/home'">TO-DO LIST</label>
+            <label class="tab_item" for="todolist" onclick="location.href='/todo/home'">TO-DO LIST</label>
 
         <input id="brainstorming" type="radio" name="tab_item">
             <label class="tab_item" for="brainstorming" onclick="location.href=''">Brainstorming</label>
@@ -59,7 +59,7 @@
                     <span id="id_check"></span>
 
                     <div class="pswpart-">
-                        <input type="password" name="psw" id="password" maxlength="15" placeholder="Password" spellcheck="false" required>
+                        <input type="password" name="psw" id="password" minlength="6" placeholder="Password" spellcheck="false" required>
                             <i class="fa-solid fa-eye" id="eye-"></i>
                     </div>
                     <input type="text" name="irum" id="irum" placeholder="Name" maxlength="10" spellcheck="false" required>
