@@ -14,18 +14,7 @@
 <body oncontextmenu="return false" onselectstart="return false">
 <div id="wrap">
     <div class="tabs">
-        <input id="all" type="radio" name="tab_item" checked>
-            <label class="tab_item" for="all" onclick="location.href='/'">Main</label>
-
-        <input id="todolist" type="radio" name="tab_item">
-            <label class="tab_item" for="todo" onclick="location.href='/todo/home'">TO-DO LIST</label>
-
-        <input id="brainstorming" type="radio" name="tab_item">
-            <label class="tab_item" for="brainstorming" onclick="location.href='/'">Brainstorming</label>
-
-        <input id="book" type="radio" name="tab_item">
-            <label class="tab_item" for="book" onclick="location.href='/book'">BOOK</label>
-
+        {% include "header.html"%}
 
         {%if session['userid']%}
         <div class="tab_content_loginresult">
@@ -59,27 +48,8 @@
         </form>
         {%endif%}
    </div>
-<!--        <div class="tab_content" id="brainstorming_content">-->
-<!--            익명 방명록-->
-<!--        </div>-->
 
-<!--        <div class="tab_content" id="book_content">-->
-<!--            도서 검색 API-->
-<!--        </div>-->
-
-
-
-    <footer>
-        <nav>
-            <a href='#' target='_blank'>Blog</a> |
-            <a href='https://github.com/CCKK15/StudyNote' target='_blank'>Github</a>
-        </nav>
-        <p>
-            <span>팀원 : 최현민 - 최서라 - 김주탁 - 김영우</span><br/>
-            <span>항해99 Toy. Study Note</span><br/>
-            <span>Copyright 2022. 15조. All Rights Reserved.</span>
-        </p>
-    </footer>
+    {% include "footer.html" %}
 </div>
 
 </body>
