@@ -119,7 +119,6 @@ def todo_get():
 
     return jsonify({'todos': todo_list})
 
-
 @app.route("/todo", methods=["DELETE"])
 def todo_delete():
 
@@ -127,7 +126,6 @@ def todo_delete():
     db.todos.delete_one({'num': int(num_receive)})
 
     return 'success'
-
 
 @app.route("/todo/undo", methods=["POST"])
 def todo_undo():
