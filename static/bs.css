@@ -1,0 +1,122 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.mytitle {
+    background-color: #74959A;
+
+    width: 100%;
+    height: 200px;
+
+    color: #F1E0AC;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mytitle > button {
+    width: 200px;
+    height: 50px;
+
+    background-color: #98B4AA;
+    color: white;
+
+    border-radius: 50px;
+    border: 1px solid white;
+
+    margin-top: 10px;
+}
+
+.mytitle > button:hover {
+    border: 2px solid white;
+    background-color: #1f5546;
+}
+
+.myboard {
+    background-color: #F1E0AC;
+
+    color: #495371;
+
+    max-width: 800px;
+    width: 95%;
+
+    margin: 20px auto 10px auto;
+
+    box-shadow: 0px 0px 3px 0px grey;
+    padding: 20px;
+
+}
+
+.wrap {
+    max-width: 1200px;
+    width: 95%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 20px auto 0px auto;
+    padding: 30px;
+
+}
+
+.card {
+    background-color: #1f5546;
+
+    width: 300px;
+    height: 100px;
+
+    color: white;
+}
+
+.mypost {
+    background-color: #F1E0AC;
+
+    color: #495371;
+
+    margin: 0px auto 10px auto;
+
+    box-shadow: 0px 0px 3px 0px grey;
+    padding: 20px;
+
+
+}
+
+.mybtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 10px;
+}
+
+.mybtn > button {
+    margin-right: 10px;
+
+}
+
+.reply_btn {
+    background-color: #98B4AA;
+
+    width: 120px;
+    height: 30px;
+
+    border-radius: 10px;
+    border: 1px solid white;
+
+    color: white;
+    margin: 10px auto 30px auto;
+}
+
+.reply_btn:hover {
+    background-color: #74959A;
+    border: 2px solid white;
+}

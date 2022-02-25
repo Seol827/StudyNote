@@ -9,7 +9,6 @@ from pymongo import MongoClient
 client = MongoClient(config.Mongo_key)
 db = client.dbsparta
 
-
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -21,6 +20,10 @@ def book():
 @app.route('/todo/home')
 def todo_home():
     return render_template('todolist.html')
+
+@app.route('/bs')
+def bs_list():
+    return render_template('bs_list.html')
 
 @app.route('/loginresult', methods=["POST"])
 def login_result():
@@ -135,6 +138,26 @@ def todo_undo():
     db.todos.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
 
     return redirect("/todo/home")
+
+### Brainstorming
+
+@app.route("/bs/bs_list", methods=["POST"])
+def bs_list_post():
+    name_receive = request.form["name_give"]
+    comment_receive = request.form["comment_give"]
+
+    doc = {
+        'name': name_receive,
+        'comment': comment_receive
+    }
+
+    db.brains.insert_one(doc)
+    return jsonify({'msg':'등록 완료!'})
+
+@app.route("/bs/bs_list", methods=["GET"])
+def bs_list_get():
+    comment_list = list(db.brains.find({},{'_id':False}))
+    return jsonify({'comments':comment_list})
 
 
 if __name__ == '__main__':
