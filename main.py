@@ -136,6 +136,11 @@ def todo_undo():
 
     return redirect("/todo/home")
 
+# @app.route("/todo/id", methods=["GET"])
+# def todo_id():
+#     id = list(db.user.find({}, {'_id': False, 'password': False, 'name' : False}))
+#
+#     return jsonify({'id': id})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8000, debug=True)
