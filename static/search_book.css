@@ -19,6 +19,8 @@
 #cards-box{
     background-color:#F1E0AC;
     border-radius: 20px;
+    position: relative;
+    min-height: 100vh;
 }
 .search-book input {
     width: 50%;
@@ -63,7 +65,6 @@ input:focus {
     font-size: 50px;
     text-align: center;
     color: #F1E0AC;
-
 }
 
 .search-book button {

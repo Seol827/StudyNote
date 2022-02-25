@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" href="../static/todo.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -13,9 +13,9 @@
             crossorigin="anonymous"></script>
 
     <title>Study Note</title>
-    <link rel="stylesheet" href="static/index.css">
-    <link rel="stylesheet" href="static/todo.css">
 
+<<<<<<< HEAD
+=======
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Josefin+Sans:wght@300&family=Jua&family=Nanum+Pen+Script&display=swap');
 
@@ -68,65 +68,12 @@
         }
 
         {
-            #index #
-        }
-        #wrap {
-            min-height: 100vh;
-            position: relative;
-            width: 100%;
-        }
-
-        /*탭*/
-        .tabs {
-            padding-bottom: 110px;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-
-        /* 탭 스타일 */
-        .tab_item {
-            width: calc(100% / 4);
-            height: 50px;
-            border-bottom: 3px solid #495371;
-            border-radius: 3px;
-            background-color: #F1E0AC;
-            line-height: 50px;
-            font-size: 16px;
-            text-align: center;
-            color: #333333;
-            display: block;
-            float: left;
-            text-align: center;
-            font-weight: bolder;
-            transition: all 0.2s ease;
-        }
-
-        .tab_item:hover {
-            opacity: 0.75;
-            cursor: pointer;
-        }
-
-        /* 라디오 버튼 UI삭제*/
-        input[name="tab_item"] {
-            display: none;
-        }
-
-        /* 탭 컨텐츠 스타일 */
-        .tab_content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 40px 0;
-            clear: both;
-        }
-
-        /* 선택된 탭 스타일 */
-        .tabs input:checked + .tab_item {
-            background-color: #495371;
-            color: #fff;
+            /*#index #*/
         }
 
     </style>
+
+>>>>>>> youngwoo
     <script>
         $(document).ready(function () {
             show_todo();
@@ -219,20 +166,20 @@
 
 <div id="wrap">
     <div class="tabs">
-        <input id="all" type="radio" name="tab_item">
-        <label class="tab_item" for="all" onclick="location.href='/'">Main</label>
-
-        <input id="todolist" type="radio" name="tab_item" checked>
-        <label class="tab_item" for="todo" onclick="location.href='/todo/home'">TO-DO LIST</label>
-
-        <input id="brainstorming" type="radio" name="tab_item">
-        <label class="tab_item" for="brainstorming" onclick="location.href='/'">Brainstorming</label>
-
-        <input id="book" type="radio" name="tab_item">
-        <label class="tab_item" for="book" onclick="location.href='/book'">BOOK</label>
+<<<<<<< HEAD
+        {% include "header.html"%}
     </div>
 
+    {%if session['userid']%}
+=======
 
+        {% include "header.html"%}
+
+    </div>
+
+    {%if session['userid']%}
+
+>>>>>>> youngwoo
     <div class="mybox">
         <div class="mytodo">
             <input id="todo" class="form-control" type="text" placeholder="to do..">
@@ -242,7 +189,12 @@
     <div class="mybox" id="todo-list">
 
     </div>
+    {%else%}
+    <script>alert('로그인 후에 이용하세요.')</script>
+    <script>location.href='/'</script>
+    {%endif%}
 
+        {% include "footer.html" %}
 </div>
 </body>
 </html>
