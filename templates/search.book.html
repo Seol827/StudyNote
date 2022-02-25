@@ -69,34 +69,28 @@
 
 </head>
 <body>
+<div id="wrap">
+    <div class="tabs">
+        {% include "header.html"%}
+        </div>
+        <div class="title">
+            <h1>도서 검색</h1>
+        </div>
 
-<div class="tabs">
-    <input id="all" type="radio" name="tab_item" checked>
-    <label class="tab_item" for="all" onclick="location.href='/todo'">Main</label>
+        <div class="search-book">
+            <input id="book_search" placeholder="찾을 도서를 검색해주세요" type="text">
+            <button class="search" onclick="book()" type="button" class="btn btn-dark">검색</button>
+            <button class="close" onclick="close_card()" type="button" class="btn btn-dark">닫기</button>
+        </div>
 
-    <input id="brainstorming" type="radio" name="tab_item">
-    <label class="tab_item" for="brainstorming" onclick="location.href='/'">Brainstorming</label>
+        <div class="mycards">
+            <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
+            </div>
+        </div>
 
-    <input id="book" type="radio" name="tab_item">
-    <label class="tab_item" for="book" onclick="location.href='/book'">BOOK</label>
+
+    {% include "footer.html" %}
 </div>
-
-
-<div class="title">
-    <h1>도서 검색</h1>
-</div>
-
-<div class="search-book">
-    <input id="book_search" placeholder="찾을 도서를 검색해주세요" type="text">
-    <button class="search" onclick="book()" type="button" class="btn btn-dark">검색</button>
-    <button class="close" onclick="close_card()" type="button" class="btn btn-dark">닫기</button>
-</div>
-
-<div class="mycards">
-    <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
-    </div>
-</div>
-
 </body>
 
 </html>

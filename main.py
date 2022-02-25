@@ -1,9 +1,10 @@
-import config
 from flask import Flask, render_template, request, jsonify, redirect, session, flash
-from pymongo import MongoClient
-
 app = Flask(__name__)
 app.secret_key = 'seora'
+
+import config
+
+from pymongo import MongoClient
 
 client = MongoClient(config.Mongo_key)
 db = client.dbsparta
@@ -13,18 +14,13 @@ db = client.dbsparta
 def home():
     return render_template('index.html')
 
-@app.route('/todo/home')
-def todo_home():
-    return render_template('todolist.html')
-
 @app.route('/book')
 def book():
     return render_template('search.book.html')
 
-@app.route('/todo')
-def todo_show():
+@app.route('/todo/home')
+def todo_home():
     return render_template('todolist.html')
-
 
 @app.route('/loginresult', methods=["POST"])
 def login_result():
@@ -82,10 +78,11 @@ def id_check():
     if check_user_id is not None:
         if check_user_id['ID']:
             return 'fail'
+            print('fail');
     return 'success'
 
-### to do list ###
 
+### to do list ###
 @app.route("/todo", methods=["POST"])
 def todo_post():
     all_todos = list(db.todos.find({}, {'_id': False}))
@@ -105,6 +102,7 @@ def todo_post():
 
     return redirect("/todo/home")
 
+
 @app.route("/todo/done", methods=["POST"])
 def todo_done():
 
@@ -115,13 +113,12 @@ def todo_done():
 
 @app.route("/todo", methods=["GET"])
 def todo_get():
-    # id = list(db.user.find({}, {'_id': False, 'password': False, 'name': False}))
     id = session['userid']
-    # todo_id = list(db.todos.find({}, {'_id': False},{'num': False},{'todo': False},{'done': False}))
 
     todo_list = list(db.todos.find({'userid':id}, {'_id': False}))
 
     return jsonify({'todos': todo_list})
+
 
 @app.route("/todo", methods=["DELETE"])
 def todo_delete():
@@ -131,20 +128,13 @@ def todo_delete():
 
     return 'success'
 
+
 @app.route("/todo/undo", methods=["POST"])
 def todo_undo():
     num_receive = request.form['num_give']
     db.todos.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
 
     return redirect("/todo/home")
-
-# @app.route("/todo/id", methods=["GET"])
-# def todo_id():
-#     id = list(db.user.find({}, {'_id': False, 'password': False, 'name' : False}))
-#
-#     return jsonify({'id': id})
-
-
 
 
 if __name__ == '__main__':

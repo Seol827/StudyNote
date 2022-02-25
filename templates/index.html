@@ -14,18 +14,7 @@
 <body oncontextmenu="return false" onselectstart="return false">
 <div id="wrap">
     <div class="tabs">
-        <input id="all" type="radio" name="tab_item" checked>
-            <label class="tab_item" for="all" onclick="location.href='/todo'">Main</label>
-
-        <input id="todolist" type="radio" name="tab_item">
-            <label class="tab_item" for="todo" onclick="location.href='/todo/home'">TO-DO LIST</label>
-
-        <input id="brainstorming" type="radio" name="tab_item">
-            <label class="tab_item" for="brainstorming" onclick="location.href='/'">Brainstorming</label>
-
-        <input id="book" type="radio" name="tab_item">
-            <label class="tab_item" for="book" onclick="location.href='/book'">BOOK</label>
-
+        {% include "header.html"%}
 
         {%if session['userid']%}
         <div class="tab_content_loginresult">
@@ -39,9 +28,11 @@
             <div class="loginform_back">
                 <div class="main_page">
                     <h2><i class="fa-solid fa-book-open"></i> Study Note <i class="fa-solid fa-book-open"></i></h2>
-                    <input type="text" name="userid" placeholder="ID" spellcheck="false" required>
-                    <input type="password" name="psw" placeholder="PASSWORD" spellcheck="false" required>
-
+                    <input type="text" name="userid" placeholder="ID" spellcheck="false" maxlength="15" required>
+                    <div class="pswpart">
+                        <input type="password" name="psw" id="psw" placeholder="PASSWORD" spellcheck="false" maxlength="15" required>
+                        <i class="fa-solid fa-eye" id="eye"></i>
+                    </div>
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}
                     {% for mes in messages %}
@@ -57,27 +48,20 @@
         </form>
         {%endif%}
    </div>
-<!--        <div class="tab_content" id="brainstorming_content">-->
-<!--            익명 방명록-->
-<!--        </div>-->
 
-<!--        <div class="tab_content" id="book_content">-->
-<!--            도서 검색 API-->
-<!--        </div>-->
-
-
-
-    <footer>
-        <nav>
-            <a href='#' target='_blank'>Blog</a> |
-            <a href='https://github.com/CCKK15/StudyNote' target='_blank'>Github</a>
-        </nav>
-        <p>
-            <span>팀원 : 최현민 - 최서라 - 김주탁 - 김영우</span><br/>
-            <span>항해99 Toy. Study Note</span><br/>
-            <span>Copyright 2022. 15조. All Rights Reserved.</span>
-        </p>
-    </footer>
+    {% include "footer.html" %}
 </div>
+
 </body>
+<script>
+        //비밀번호 확인
+        $("#eye").on("click", function () {
+            if ($("#psw").attr("type") == "password") {
+                $("#psw").attr("type", "text");
+            } else {
+                $("#psw").attr("type", "password");
+            }
+        });
+
+</script>
 </html>
