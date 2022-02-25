@@ -14,66 +14,6 @@
 
     <title>Study Note</title>
 
-<<<<<<< HEAD
-=======
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Josefin+Sans:wght@300&family=Jua&family=Nanum+Pen+Script&display=swap');
-
-        .mybox {
-            width: 95%;
-            max-width: 1000px;
-            padding: 20px;
-            border-bottom: 3px solid #495371;
-            background-color: #74959A;
-            margin: 25px auto;
-
-            flex-direction: column;
-            border-radius: 20px;
-
-            font-family: 'Josefin Sans', sans-serif;
-
-        }
-
-        .mytodo {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .mytodo > input {
-            width: 80%;
-        }
-
-        .mybox > li {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-
-            margin-bottom: 10px;
-            min-height: 48px;
-        }
-
-        .mybox > li > h2 {
-            max-width: 75%;
-            font-size: 20px;
-            font-weight: 500;
-            margin-right: auto;
-            margin-bottom: 0px;
-        }
-
-        .mybox > li > h2.done {
-            text-decoration: line-through
-        }
-
-        {
-            /*#index #*/
-        }
-
-    </style>
-
->>>>>>> youngwoo
     <script>
         $(document).ready(function () {
             show_todo();
@@ -166,20 +106,10 @@
 
 <div id="wrap">
     <div class="tabs">
-<<<<<<< HEAD
         {% include "header.html"%}
     </div>
 
     {%if session['userid']%}
-=======
-
-        {% include "header.html"%}
-
-    </div>
-
-    {%if session['userid']%}
-
->>>>>>> youngwoo
     <div class="mybox">
         <div class="mytodo">
             <input id="todo" class="form-control" type="text" placeholder="to do..">
