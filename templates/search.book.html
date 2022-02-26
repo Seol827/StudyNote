@@ -46,7 +46,7 @@
 
                         let temp_html = ` <div class="col">
                                             <div class="card h-100">
-                                                <a href="${url}"><img src="${image}"
+                                                <a target="_blank" href="${url}"><img src="${image}"
                                                      class="card-img-top"> </a>
                                                 <div class="card-body">
                                                     <h5 class="card-title">제목: ${title}</h5>
@@ -54,6 +54,7 @@
                                                 </div>
                                             </div>
                                         </div>`
+                        console.log()
                         $('#cards-box').append(temp_html)
 
                     }
@@ -72,22 +73,23 @@
 <div id="wrap">
     <div class="tabs">
         {% include "header.html"%}
-        </div>
-        <div class="title">
-            <h1>도서 검색</h1>
-        </div>
+</div>
 
-        <div class="search-book">
-            <input id="book_search" placeholder="찾을 도서를 검색해주세요" type="text">
-            <button class="search" onclick="book()" type="button" class="btn btn-dark">검색</button>
-            <button class="close" onclick="close_card()" type="button" class="btn btn-dark">닫기</button>
-        </div>
 
-        <div class="mycards">
-            <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
-            </div>
-        </div>
+    <div class="title">
+        <h1>도서 검색</h1>
+    </div>
 
+    <div class="search-book">
+        <input id="book_search" placeholder="찾을 도서를 검색해주세요" type="text">
+        <button class="search" onclick="book()" type="button" class="btn btn-dark">검색</button>
+        <button class="close" onclick="close_card()" type="button" class="btn btn-dark">닫기</button>
+    </div>
+
+    <div class="mycards">
+        <div class="row row-cols-1 row-cols-md-4 g-4" id="cards-box">
+        </div>
+    </div>
 
     {% include "footer.html" %}
 </div>
