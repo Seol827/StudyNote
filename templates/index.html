@@ -5,11 +5,9 @@
     <title>Study Note</title>
 
     <link rel="stylesheet" href="/static/index.css">
-    <link rel="stylesheet" href="static/todo.css">
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="https://kit.fontawesome.com/2adf3c10c8.js" crossorigin="anonymous"></script>
-
 </head>
 <body oncontextmenu="return false" onselectstart="return false">
 <div id="wrap">
@@ -21,7 +19,16 @@
             <div class="tab_logout">
                 <button onclick="location.href='/logout'">logout</button>
             </div>
-            <h2 class="welcome">안녕하세요, {{session['userid']}}님!</h2>
+
+            <div class="tab_content_mid">
+                <h1 id="clock">0:00:00</h1>
+                <h2 class="welcome">안녕하세요, {{session['userid']}}님!</h2>
+
+                <div id="quote">
+                    <span></span><br>
+                    <span></span>
+                </div>
+            </div>
         </div>
         {%else%}
         <form class="tab_content" id="main_content" action="/loginresult" method="post">
@@ -64,4 +71,6 @@
         });
 
 </script>
+<script src="/static/js/clock.js"></script>
+<script src="/static/js/quotes.js"></script>
 </html>
